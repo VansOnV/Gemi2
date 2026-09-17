@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Flicker</title>
+<link rel="preload" href="sound.mp3" as="fetch" crossorigin>
 <style>
   html, body {
     margin: 0;
@@ -85,6 +86,7 @@ async function loadAudio() {
     if (audioCtx.state === "running") {
       audioUnlocked = true;
       setStatus("audio: on", true);
+      playSound(); // fire immediately, don't wait for the loop tick
     } else {
       setStatus("audio: tap anywhere to enable sound");
     }
@@ -114,6 +116,7 @@ async function tryUnlockOnGesture() {
     if (audioCtx.state === "running") {
       audioUnlocked = true;
       setStatus("audio: on", true);
+      playSound(); // fire immediately, don't wait for the loop tick
     }
   } catch (e) {}
 }
