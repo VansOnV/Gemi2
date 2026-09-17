@@ -171,7 +171,7 @@ function boot() {
   loadAudio();
 }
 
-window.addEventListener("load", boot);
+boot(); // run immediately — script is at end of body, DOM is already ready
 
 ["click", "touchstart", "keydown", "pointerdown"].forEach(evt => {
   window.addEventListener(evt, () => {
